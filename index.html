@@ -70,12 +70,13 @@ if (btn) {
   <script src="root/js/pwn.js"></script>
   <style>
     /* Center the button in the viewport */
-    body {
+    html, body {
       background: #000;
       margin: 0;
       height: 100vh;
       display: flex;
-      justify-content: center;
+      position: relative;
+      overflow:-moz-hidden-unscrollable;
       align-items: center;
       font-family: -apple-system-font, BlinkMacSystemFont, Inter, sans-serif;
     }
@@ -88,34 +89,104 @@ if (btn) {
     height: 50px;
     display: flex;
     position: relative;
-    left: 18px;
-    bottom: 20px;
+    left: 0px;
+    bottom: 100px;
     cursor: pointer;
+    font-size: 14px;
     align-items: center;
     justify-content: center;
     color: white;
     text-decoration: none;
     transition: all 0.2s ease;
     box-sizing: border-box;
+    font-family: -apple-system-font, BlinkMacSystemFont, Inter, sans-serif;
 }
     #exploitBtn:hover {
     background: #3a3a3a;
     transform: scale(1.1);
 }
+
+.container {
+    background: #1e1e1e;
+    border-radius: 16px;
+    border: 1px solid #333;
+    padding: 30px;
+    height: 600px;
+    width: 500px;
+    top: 100px;
+    position:relative;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    margin: 20px;
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+
   </style>
+
+ <div class="container" id="logContainer">
+  </div>
+<button id="exploitBtn">Jailbreak</button>
 </head>
+
 <body>
-  <button id="exploitBtn">Jailbreak</button>
+
+
+  
 
   <script>
+
+const logContainer = document.getElementById("logContainer");
+
+    function appendLog(message) {
+      const line = document.createElement("div");
+      line.className = "log-line";
+      line.textContent = message;
+      logContainer.appendChild(line);
+      logContainer.scrollTop = logContainer.scrollHeight;
+    }
+
     // Replace 'triggerExploit' with your exploit function name from pwn.js
-    document.getElementById("exploitBtn").addEventListener("click", () => {
-      if (typeof triggerExploit === "function") {
-        triggerExploit();
-      } else {
-        alert("Exploit function not found!");
+window.onload = () => {
+      appendLog("[*] Spyware Loaded");
+      if (glRenderer.includes("A10")) {
+            appendLog("[*] Running on A10");
+        if (userAgent.includes("10_3_2") || userAgent.includes("10_3_3")) {
+          appendLog("[*] iOS Version: 10.3.3, Supported!");
+        } else {
+          document.getElementById("exploitBtn").textContent = "Unsupported";
+        }
+      } else if (glRenderer.includes("A9")) {
+       appendLog("[*] Running on A9");
       }
+      
+      appendLog("[*] iOS Version: parsing...");
+      appendLog("[*] Bootstrap check: verifying package manager...");
+    };
+
+    function triggerExploit() {
+      appendLog("[*] exploiting amfi...");
+      document.body.className = "wait";
+      setTimeout(() => {
+        if (typeof window.go === "function") {
+          appendLog("[*] Exploiting Kernel w/ ");
+          window.go();
+        } else {
+          appendLog("[!] Kernel Exploit failed! Please refresh the page and try again.");
+        }
+      }, 10);
+    }
+
+    document.getElementById("exploitBtn").addEventListener("click", () => {
+      triggerExploit();
     });
+  </script>
   </script>
 </body>
 </html>
+ 
