@@ -1,0 +1,35 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body Defaults */
+body {
+    font-family: -apple-system-font, BlinkMacSystemFont, Inter, sans-serif;
+    color: white;
+    font-weight: 200;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    -webkit-user-select: none;
+}
+
+span.colon::after {
+    font-size: 0.9em;
+    top: -0.1em;
+    bottom: 15px;
+    content: ":";
+    position: relative;
+}
+
+#main {
+    display: flex;
+    justify-content: center;
+    z-index: -1;
+}
+ 
