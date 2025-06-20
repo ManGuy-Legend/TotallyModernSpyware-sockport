@@ -32,32 +32,6 @@ window.onload = function() {
     }
 };
 
-function triggerExploit() {
-  var logo = document.getElementById("logo");
-  if (logo && logo.parentNode) {
-    logo.parentNode.removeChild(logo);
-  }
-  document.body.className = "wait";
-  var notice = document.getElementById("notice");
-  if (notice) {
-    notice.textContent = "Running exploit...";
-  }
-  setTimeout(function () {
-    if (typeof window.go === "function") {
-      window.go();
-    } else {
-      alert("window.go not found!");
-    }
-  }, 10);
-}
-
-// Assuming your existing button has id="exploitButton"
-var btn = document.getElementById("exploitButton");
-if (btn) {
-  btn.addEventListener("click", function () {
-    triggerExploit();
-  });
-}
 </script>
 <!--mergestart
 <script src="root/js/utils.js"></script>
