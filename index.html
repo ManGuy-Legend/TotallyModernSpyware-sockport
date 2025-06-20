@@ -106,7 +106,7 @@ if (btn) {
     transform: scale(1.1);
 }
 
-.container {
+#logContainer {
     background: #1e1e1e;
     border-radius: 16px;
     border: 1px solid #333;
@@ -129,7 +129,7 @@ div {
 
   </style>
 
- <div class="container" id="logContainer">
+ <div id="logContainer">
   </div>
 <button id="exploitBtn">Jailbreak</button>
 </head>
@@ -141,14 +141,14 @@ div {
 
   <script>
 
-const logsContainer = document.getElementById("logContainer");
+const LogBox = document.getElementById("logContainer");
 
     function appendLog(message) {
       const line = document.createElement("div");
       line.className = "log-line";
       line.textContent = message;
-      logsContainer.appendChild(line);
-      logsContainer.scrollTop = logsContainer.scrollHeight;
+      LogBox.appendChild(line);
+      LogBox.scrollTop = LogBox.scrollHeight;
     }
 
     // Replace 'triggerExploit' with your exploit function name from pwn.js
