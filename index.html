@@ -141,14 +141,14 @@ div {
 
   <script>
 
-const logContainer = document.getElementById("logContainer");
+const logsContainer = document.getElementById("logContainer");
 
     function appendLog(message) {
       const line = document.createElement("div");
       line.className = "log-line";
       line.textContent = message;
-      logContainer.appendChild(line);
-      logContainer.scrollTop = logContainer.scrollHeight;
+      logsContainer.appendChild(line);
+      logsContainer.scrollTop = logsContainer.scrollHeight;
     }
 
     // Replace 'triggerExploit' with your exploit function name from pwn.js
@@ -165,8 +165,8 @@ window.onload = () => {
        appendLog("[*] Running on A9");
       }
       
-      appendLog("[*] iOS Version: parsing...");
-      appendLog("[*] Bootstrap check: verifying package manager...");
+      appendLog("[*] iOS Version: parsing");
+      appendLog("[*] Bootstrap check: verifying package manager");
     };
 
     function triggerExploit() {
@@ -174,7 +174,7 @@ window.onload = () => {
       document.body.className = "wait";
       setTimeout(() => {
         if (typeof window.go === "function") {
-          appendLog("[*] Exploiting Kernel w/ ");
+          appendLog("[*] Exploiting Kernel w/ sock_port2 ");
           window.go();
         } else {
           appendLog("[!] Kernel Exploit failed! Please refresh the page and try again.");
