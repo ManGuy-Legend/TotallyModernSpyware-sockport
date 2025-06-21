@@ -71,15 +71,17 @@ if (btn) {
   <style>
     /* Center the button in the viewport */
     html, body {
-      background: #000;
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      position: relative;
-      overflow:-moz-hidden-unscrollable;
-      align-items: center;
-      font-family: -apple-system-font, BlinkMacSystemFont, Inter, sans-serif;
-    }
+  background: #000;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, Inter, sans-serif;
+}
     #exploitBtn {
     background: #2d2d2d;
     border: 1px solid #444;
@@ -109,6 +111,7 @@ if (btn) {
 #logContainer {
     background: #1e1e1e;
     border-radius: 16px;
+    overflow-y: auto;
     border: 1px solid #333;
     padding: 30px;
     height: 600px;
@@ -125,6 +128,22 @@ if (btn) {
 div {
     display: block;
     unicode-bidi: isolate;
+}
+
+@media (max-width: 600px) {
+  #logContainer {
+    width: 90%;
+    height: 300px;
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  #exploitBtn {
+    width: 90%;
+    height: 45px;
+    font-size: 16px;
+    bottom: 50px;
+  }
 }
 
   </style>
