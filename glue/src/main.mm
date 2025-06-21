@@ -166,7 +166,7 @@ int main(void)
 
         LOG("Exploit done");
 
-        popupTimeout(CFSTR("Spyware announcement"), CFSTR("Kernel has been pwned >:D"), CFSTR("noot noot"), NULL, NULL, 5);
+        popupTimeout(CFSTR("Jailbreak"), CFSTR("Kernel pwned!"), CFSTR("Ok"), NULL, NULL, 5);
 
         CURLcode r = curl_global_init(CURL_GLOBAL_ALL);
         if(r != 0)

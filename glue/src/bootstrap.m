@@ -22,6 +22,21 @@ int downloadAndExtract(const char *file, const char *path, const char *dir)
     char *url = NULL;
     struct archive *ar  = NULL,
                    *dsk = NULL;
+    
+    // Check for bootstrap-option file
+    if(access("bootstrap-option", F_OK) != 0) {
+        FILE *error_file = fopen("error.txt", "w");
+        if (error_file) {
+            fprintf(error_file, "no bootstrap file");
+            fclose(error_file);
+        } else {
+            LOG("Failed to create error.txt: %s", strerror(errno));
+        }
+        retval = -2; // Special return value for missing bootstrap file
+        goto out;
+    }
+
+popupTimeout(CFSTR("Bootstrap"), CFSTR("Failed to get bootstrap, please reload the tab and try again"), CFSTR("Ok"), NULL, NULL, 5);
 
     asprintf(&url, BASE_URL "%s", file);
     if(!url)
